@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2023 Manuel Weiss <mweiss@bht-berlin.de>
+#
+# SPDX-License-Identifier: MIT
+
+"""
+As an additional option for cases in which installing the package using pip is not possible, this file *might* make
+it possible to compile and import the C++ version on the fly.
+
+    sys.path.append('path/to/pneu_arm/')
+    import pyximport
+    pyximport.install()
+    from pneu_arm import PneuArm
+"""
+
+from pathlib import Path
+import numpy as np
+
+
+def make_ext(modname, pyxfilename):
+    from distutils.extension import Extension
+
+    p = Path(__file__).resolve().parent
+    return Extension(
+        name=modname,
+        sources=[pyxfilename, 
+        'cpp/comm.cpp', 
+        ],
+        include_dirs=[str(p), np.get_include()],
+        language="c++",        
+    )

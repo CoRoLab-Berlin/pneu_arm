@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2023 Manuel Weiss <manuel.Weiss@bht-berlin.de>
+#
+# SPDX-License-Identifier: MIT
+
+include pneu_arm/*.py
+include pneu_arm/*.pyx
+include pneu_arm/*.pyxbld
+include pneu_arm/cpp/*.cpp
+include pneu_arm/cpp/*.hpp
+include pneu_arm/cpp/*.h
+include pneu_arm/cpp/CMakeLists.txt
+
